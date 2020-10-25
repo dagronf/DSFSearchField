@@ -1,9 +1,11 @@
 # DSFSearchField
 
-![](https://img.shields.io/github/v/tag/dagronf/DSFSearchField) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
-![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
+![](https://github.com/dagronf/dagronf.github.io/blob/master/art/projects/DSFSearchField/screenshot.png?raw=true)
 
 A simple NSSearchField with a localizable, managed recent searches menu.
+
+![](https://img.shields.io/github/v/tag/dagronf/DSFSearchField) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
+![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
 
 ## Why
 
@@ -12,6 +14,8 @@ A simple NSSearchField with a localizable, managed recent searches menu.
 `DSFSearchField` inherits from `NSSearchField` so search delegates, actions etc. all work as expected.
 
 ## Installation
+
+Note that currently to support localization you'll need to use the 'Direct' method below until Swift tool version 5.3 becomes more pervasive (it supports embedding localizations within modules)
 
 ### Swift Package Manager
 
@@ -70,8 +74,8 @@ Bindable observation of the search term.
 
 ## History
 
+* `1.0.1`: Brought menu labels in line with Finder.
 * `1.0.0`: Initial release
-
 
 ## License
 

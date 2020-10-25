@@ -100,13 +100,13 @@ private extension DSFSearchField {
 private extension DSFSearchField {
 	// Localized strings
 	enum Localizations {
-		static let LCSMenuTitle = NSLocalizedString("Recents", comment: "Menu title for the recent searches menu")
+		static let LCSMenuTitle = NSLocalizedString("Recent", comment: "Menu title for the recent searches menu")
 
-		static let LCSMenuItemTitle = NSLocalizedString("Search Term", comment: "")
-		static let LCSMenuClearRecentsTitle = NSLocalizedString("Clear Menu", comment: "Menu item to clear all recent items from the search recent menu")
+		static let LCSMenuItemTitle = NSLocalizedString("Item", comment: "")
+		static let LCSMenuClearRecentsTitle = NSLocalizedString("Clear Recent Searches", comment: "Menu item to clear all recent items from the search recent menu")
 
 		static let LCSMenuRecentTitle = NSLocalizedString("Recent Searches", comment: "Title presented for the available recent searches menu when recent searches are available")
-		static let LCSMenuNoRecentsTitle = NSLocalizedString("No Recent Searches", comment: "Title stating that there are no recent searches in the search menu")
+		static let LCSMenuNoRecentsTitle = NSLocalizedString("No Recent Search", comment: "Title stating that there are no recent searches in the search menu")
 	}
 }
 

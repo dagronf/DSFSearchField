@@ -80,7 +80,8 @@ Bindable observation of the search term.
 
 ## History
 
-* `1.1`: Support for SwiftUI (macOS only)
+* `1.1.1`: Fixed SwiftUI constructor visibility
+* `1.1.0`: Support for SwiftUI (macOS only)
 * `1.0.1`: Brought menu labels in line with Finder.
 * `1.0.0`: Initial release
 

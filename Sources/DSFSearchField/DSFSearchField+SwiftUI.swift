@@ -48,7 +48,7 @@ public extension DSFSearchField {
 		///   - placeholderText: The placeholder text to display in an empty search field
 		///   - autosaveName: The autosave name
 		///   - onSearchTextChange: An optional callback for when the search term changes
-		init(text: Binding<String>,
+		public init(text: Binding<String>,
 			  placeholderText: String? = nil,
 			  autosaveName: String? = nil,
 			  onSearchTermChange: ((String) -> Void)? = nil)

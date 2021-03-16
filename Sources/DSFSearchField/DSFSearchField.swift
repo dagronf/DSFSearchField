@@ -2,7 +2,7 @@
 //  DSFSearchField.swift
 //
 //  Created by Darren Ford on 26/10/20.
-//  Copyright © 2020 Darren Ford. All rights reserved.
+//  Copyright © 2021 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
@@ -22,7 +22,7 @@
 
 #if os(macOS)
 
-import Cocoa
+import AppKit
 
 /// A custom search field that provides a recent search list.
 ///

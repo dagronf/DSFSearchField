@@ -2,7 +2,7 @@
 
 ![](https://github.com/dagronf/dagronf.github.io/blob/master/art/projects/DSFSearchField/screenshot.png?raw=true)
 
-A simple NSSearchField with a localizable, managed recent searches menu.
+A simple NSSearchField with a localizable, managed recent searches menu and SwiftUI support.
 
 ![](https://img.shields.io/github/v/tag/dagronf/DSFSearchField) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
 ![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
@@ -23,7 +23,7 @@ Add `https://github.com/dagronf/DSFSearchField` to your project.
 
 ### Direct
 
-Copy `DSFSearchField.swift` to your project.
+Copy `DSFSearchField.swift` (and `DSFSearchField+SwiftUI.swift`) if you want SwiftUI support) to your project.
 
 ## Usage
 
@@ -36,6 +36,12 @@ Copy `DSFSearchField.swift` to your project.
 
 ```swift
 let searchField = DSFSearchField(frame: rect, recentsAutosaveName: "primary-search")
+```
+
+### SwiftUI
+
+```swift
+DSFSearchField.SwiftUI(text: $searchText, autosaveName: "SystemColorsSearchField")
 ```
 
 ## Conveniences
@@ -74,15 +80,18 @@ Bindable observation of the search term.
 
 ## History
 
+* `1.1`: Support for SwiftUI (macOS only)
 * `1.0.1`: Brought menu labels in line with Finder.
 * `1.0.0`: Initial release
 
 ## License
 
+MIT. Use it for anything you want, just attribute my work. Let me know if you do use it somewhere, I'd love to hear about it!
+
 ```
 MIT License
 
-Copyright (c) 2020 Darren Ford
+Copyright (c) 2021 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

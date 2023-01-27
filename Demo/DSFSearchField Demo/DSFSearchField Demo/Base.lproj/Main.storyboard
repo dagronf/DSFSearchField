@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -723,11 +723,11 @@
                                 <rect key="frame" x="17" y="34" width="446" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="2Ry-gs-IWS">
-                                    <rect key="frame" x="3" y="3" width="440" height="65"/>
+                                    <rect key="frame" x="4" y="5" width="438" height="63"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2H-aM-kaX">
-                                            <rect key="frame" x="219" y="24" width="201" height="21"/>
+                                            <rect key="frame" x="219" y="22" width="201" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="jTR-Q6-z19">
                                                 <font key="font" metaFont="system"/>
@@ -739,7 +739,7 @@
                                             </connections>
                                         </textField>
                                         <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tl-UC-Yr9" customClass="DSFSearchField" customModule="DSFSearchField">
-                                            <rect key="frame" x="20" y="23" width="191" height="22"/>
+                                            <rect key="frame" x="20" y="21" width="191" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" recentsAutosaveName="search-settings-binding" id="KDe-Lt-0ua">
                                                 <font key="font" metaFont="system"/>
@@ -757,11 +757,11 @@
                                 <rect key="frame" x="17" y="121" width="446" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="VDC-ju-YVE">
-                                    <rect key="frame" x="3" y="3" width="440" height="65"/>
+                                    <rect key="frame" x="4" y="5" width="438" height="63"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAV-6c-cRP" customClass="DSFSearchField" customModule="DSFSearchField">
-                                            <rect key="frame" x="220" y="23" width="200" height="22"/>
+                                            <rect key="frame" x="220" y="21" width="200" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" maximumRecents="20" recentsAutosaveName="setting-search-text" id="2V1-pp-zsR">
                                                 <font key="font" metaFont="system"/>
@@ -770,7 +770,7 @@
                                             </searchFieldCell>
                                         </searchField>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91o-W4-9b2">
-                                            <rect key="frame" x="20" y="24" width="192" height="21"/>
+                                            <rect key="frame" x="20" y="22" width="192" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="b1g-Ux-gge">
                                                 <font key="font" metaFont="system"/>

@@ -10,14 +10,32 @@ import DSFSearchField
 
 struct ContentView: View {
 	@State var search1: String = ""
+
+	@State var submittedText: String = ""
+
 	var body: some View {
-		HStack {
-			Text("Search ->")
-			DSFSearchField.SwiftUI(
-				text: $search1,
-				autosaveName: "Search1"
-			)
-			Text(search1)
+		VStack(alignment: .leading, spacing: 8) {
+			HStack {
+				Text("Search ->")
+				DSFSearchField.SwiftUI(
+					text: $search1,
+					autosaveName: "Search1"
+				)
+				.onUpdateSearchText { newValue in
+					Swift.print("Update with new value -> \(newValue)")
+				}
+				.onSubmitSearchText { newValue in
+					submittedText = newValue
+				}
+			}
+			HStack {
+				Text("Updated search string:")
+				Text(search1)
+			}
+			HStack {
+				Text("Submitted search string:")
+				Text(submittedText)
+			}
 		}
 		.padding()
 	}

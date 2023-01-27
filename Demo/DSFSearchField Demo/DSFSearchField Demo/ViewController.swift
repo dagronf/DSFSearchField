@@ -21,11 +21,14 @@ class ViewController: NSViewController {
 		// Do any additional setup after loading the view.
 
 		self.primarySearchField.searchTermChangeCallback = { newSearchTerm in
-			Swift.print("primary - search term is `\(newSearchTerm)`")
+			Swift.print("primary UPDATE: search term is `\(newSearchTerm)`")
 		}
 
+		self.primarySearchField.searchSubmitCallback = { newSearchTerm in
+			Swift.print("primary SUBMIT: search term is `\(newSearchTerm)`")
+		}
 	}
-
+	
 	override var representedObject: Any? {
 		didSet {
 		// Update the view, if already loaded.

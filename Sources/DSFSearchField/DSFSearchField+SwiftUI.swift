@@ -20,17 +20,12 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#if os(macOS)
-
-#if canImport(SwiftUI)
+#if os(macOS) && canImport(SwiftUI)
 
 import AppKit
 import SwiftUI
 
 @available(macOS 10.15, *)
-@available(iOS, unavailable)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
 public extension DSFSearchField {
 	/// A SwiftUI wrapper for DSFSearchField
 	struct SwiftUI: NSViewRepresentable {
@@ -41,6 +36,7 @@ public extension DSFSearchField {
 		let placeholderText: String?
 		let autosaveName: String?
 		let onSearchTermChange: ((String) -> Void)?
+		let onSearchTermSubmit: ((String) -> Void)?
 
 		/// Initialize a DSFSearchField
 		/// - Parameters:
@@ -48,41 +44,79 @@ public extension DSFSearchField {
 		///   - placeholderText: The placeholder text to display in an empty search field
 		///   - autosaveName: The autosave name
 		///   - onSearchTextChange: An optional callback for when the search term changes
-		public init(text: Binding<String>,
-			  placeholderText: String? = nil,
-			  autosaveName: String? = nil,
-			  onSearchTermChange: ((String) -> Void)? = nil)
-		{
+		///   - onSearchTermSubmit: An optional callback for when the search field submits a value
+		public init(
+			text: Binding<String>,
+			placeholderText: String? = nil,
+			autosaveName: String? = nil,
+			onSearchTermChange: ((String) -> Void)? = nil,
+			onSearchTermSubmit: ((String) -> Void)? = nil
+		) {
 			self._text = text
 			self.placeholderText = placeholderText
 			self.autosaveName = autosaveName
 			self.onSearchTermChange = onSearchTermChange
+			self.onSearchTermSubmit = onSearchTermSubmit
+		}
+
+		/// Called when the user 'submits' the text in the search control
+		public func onUpdateSearchText(_ block: @escaping (String) -> Void) -> Self {
+			return DSFSearchField.SwiftUI(
+				text: self.$text,
+				placeholderText: self.placeholderText,
+				autosaveName: self.autosaveName,
+				onSearchTermChange: block,
+				onSearchTermSubmit: self.onSearchTermChange
+			)
+		}
+
+		/// Called when the user 'submits' the text in the search control
+		public func onSubmitSearchText(_ block: @escaping (String) -> Void) -> Self {
+			return DSFSearchField.SwiftUI(
+				text: self.$text,
+				placeholderText: self.placeholderText,
+				autosaveName: self.autosaveName,
+				onSearchTermChange: self.onSearchTermChange,
+				onSearchTermSubmit: block
+			)
 		}
 	}
 }
 
 @available(macOS 10.15, *)
-@available(iOS, unavailable)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
 public extension DSFSearchField.SwiftUI {
-	func makeNSView(context _: NSViewRepresentableContext<DSFSearchField.SwiftUI>) -> DSFSearchField {
+	func makeNSView(
+		context _: NSViewRepresentableContext<DSFSearchField.SwiftUI>
+	) -> DSFSearchField {
 		let searchBar = DSFSearchField(frame: .zero, recentsAutosaveName: self.autosaveName)
 		searchBar.placeholderString = self.placeholderText
 		searchBar.searchTermChangeCallback = { newTerm in
 			self.text = newTerm
 			self.onSearchTermChange?(newTerm)
 		}
+		searchBar.searchSubmitCallback = { self.onSearchTermSubmit?($0) }
 		return searchBar
 	}
 
-	func updateNSView(_ nsView: DSFSearchField,
-							context _: NSViewRepresentableContext<DSFSearchField.SwiftUI>)
-	{
+	func updateNSView(
+		_ nsView: DSFSearchField,
+		context _: NSViewRepresentableContext<DSFSearchField.SwiftUI>
+	) {
 		nsView.stringValue = text
 	}
 }
 
-#endif
+//@available(macOS 10.15, *)
+//struct GreenButtonStyle: ViewModifier {
+//	 func body(content: Content) -> some View {
+//		  return content
+//		  .foregroundColor(.white)
+//		  .background(Color.green)
+//		  .border(Color(red: 7/255,
+//							 green: 171/255,
+//							 blue: 67/255),
+//					 width: 5)
+//	 }
+//}
 
 #endif

@@ -38,20 +38,25 @@ Copy `DSFSearchField.swift` (and `DSFSearchField+SwiftUI.swift`) if you want Swi
 let searchField = DSFSearchField(frame: rect, recentsAutosaveName: "primary-search")
 ```
 
-### SwiftUI
-
-```swift
-DSFSearchField.SwiftUI(text: $searchText, autosaveName: "SystemColorsSearchField")
-```
-
 ## Conveniences
 
-### Block-based callback for search text changes
+### Search text change callback
 
-In addition to the standard `NSSearchField` action callback, `DSFSearchField` provides a simple block-based callback mechanism (optional) to detect changes to the search string.
+This is called whenever the text changes within the search field.
 
 ```swift
    searchField.searchTermChangeCallback = { [weak self] newSearchTerm in
+      // Do something with 'newSearchTerm'
+      ...
+   }
+```
+
+### Submit callback
+
+This is called when the user presses 'return' in the search field.
+
+```swift
+   searchField.searchSubmitCallback = { [weak self] newSearchTerm in
       // Do something with 'newSearchTerm'
       ...
    }
@@ -64,23 +69,79 @@ You can set the search text using `stringValue`, but I personally find this scan
 Simple setting of the search term
 
 ```swift
-   searchField.searchTerm = "cats"
+searchField.searchTerm = "cats"
 ```
 
 Bindable observation of the search term.
 
 ```swift
-   s.addObserver(
-      self, 
-      forKeyPath: #keyPath(DSFSearchField.searchTerm), 
-      options: [.new], 
-      context: nil)
+searchField.addObserver(
+   self, 
+   forKeyPath: #keyPath(DSFSearchField.searchTerm), 
+   options: [.new], 
+   context: nil)
 ```
 
+## SwiftUI
+
+`DSFSearchField` provides a basic SwiftUI interface to the search control.
+
+```swift
+DSFSearchField.SwiftUI(
+   text: $searchText, 
+   placeholderText: "Search for colors…",
+   autosaveName: "SystemColorsSearchField"
+)
+```
+
+### Available view modifiers
+
+**Note:** Unfortunately, I could not figure out how to hook into SwiftUI's `onSubmit` view modifier (and it appears that
+the required `Environment` values have not been made visible to the public. So that means that the default `onSubmit`
+view modifier that SwiftUI provides will not be called.
+
+#### `onUpdateSearchText`
+
+Provide a block that gets called when the search text changes.
+
+```swift
+DSFSearchField.SwiftUI(...)
+   .onUpdateSearchText { newValue in
+      Swift.print("Update with new value -> \(newValue)")
+   }
+```
+
+#### `onSubmitSearchText`
+
+Provide a block that gets called when the search text is submitted (the user presses the return key in the field)
+
+```swift
+DSFSearchField.SwiftUI(...)
+   .onSubmitSearchText { newValue in
+      Swift.print("Update with new value -> \(newValue)")
+   }
+```
+
+### Example
+
+```swift
+var body: some View {
+   DSFSearchField.SwiftUI(
+      text: $search1,
+      autosaveName: "Search1"
+   )
+   .onUpdateSearchText { newValue in
+      Swift.print("Update with new value -> \(newValue)")
+   }
+   .onSubmitSearchText { newValue in
+      Swift.print("Submit with new value -> \(newValue)")
+   }
+}
+```
 
 ## History
 
-* `1.1.1`: Fixed SwiftUI constructor visibility
+* `2.0.0`: Dropped 10.11/10.12 support. Added 'submit' support
 * `1.1.0`: Support for SwiftUI (macOS only)
 * `1.0.1`: Brought menu labels in line with Finder.
 * `1.0.0`: Initial release

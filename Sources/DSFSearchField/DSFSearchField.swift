@@ -42,6 +42,9 @@ import AppKit
 	/// An (optional) block-based interface for receiving search field changes
 	@objc public var searchTermChangeCallback: ((String) -> Void)? = nil
 
+	/// Called when the user 'submits' the search (eg. presses return in the control)
+	@objc public var searchSubmitCallback: ((String) -> Void)? = nil
+
 	/// Create a search field
 	/// - Parameters:
 	///   - frameRect: The frame for the field
@@ -59,7 +62,21 @@ import AppKit
 	}
 
 	deinit {
+		self.delegate = nil
 		self.unbind(.value)
+	}
+}
+
+// MARK: - delegate callbacks
+
+extension DSFSearchField: NSSearchFieldDelegate {
+	public func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+		if commandSelector == #selector(NSResponder.insertNewline(_:)) {
+			if let callback = self.searchSubmitCallback {
+				callback(self.searchTerm)
+			}
+		}
+		return false
 	}
 }
 
@@ -71,6 +88,7 @@ private extension DSFSearchField {
 	func setup() {
 		self.searchMenuTemplate = self.createSearchesMenu()
 		self.bind(.value, to: self, withKeyPath: #keyPath(searchTerm), options: nil)
+		self.delegate = self
 	}
 
 	// Generate a searches menu

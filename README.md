@@ -4,7 +4,7 @@
 
 A simple NSSearchField with a localizable, managed recent searches menu and SwiftUI support.
 
-![](https://img.shields.io/github/v/tag/dagronf/DSFSearchField) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
+![](https://img.shields.io/github/v/tag/dagronf/DSFSearchField) ![](https://img.shields.io/badge/macOS-10.13+-red) ![](https://img.shields.io/badge/Swift-5.4-orange.svg)
 ![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
 
 ## Why

@@ -94,6 +94,11 @@ public extension DSFSearchField.SwiftUI {
 			self.onSearchTermChange?(newTerm)
 		}
 		searchBar.searchSubmitCallback = { self.onSearchTermSubmit?($0) }
+
+		// Default the control to scrolling text
+		searchBar.cell?.wraps = false
+		searchBar.cell?.isScrollable = true
+
 		return searchBar
 	}
 
@@ -104,18 +109,5 @@ public extension DSFSearchField.SwiftUI {
 		nsView.stringValue = text
 	}
 }
-
-//@available(macOS 10.15, *)
-//struct GreenButtonStyle: ViewModifier {
-//	 func body(content: Content) -> some View {
-//		  return content
-//		  .foregroundColor(.white)
-//		  .background(Color.green)
-//		  .border(Color(red: 7/255,
-//							 green: 171/255,
-//							 blue: 67/255),
-//					 width: 5)
-//	 }
-//}
 
 #endif

@@ -1,8 +1,7 @@
 //
 //  DSFSearchField.swift
 //
-//  Created by Darren Ford on 26/10/20.
-//  Copyright © 2021 Darren Ford. All rights reserved.
+//  Copyright © 2023 Darren Ford. All rights reserved.
 //
 //  MIT license
 //

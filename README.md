@@ -139,13 +139,6 @@ var body: some View {
 }
 ```
 
-## History
-
-* `2.0.0`: Dropped 10.11/10.12 support. Added 'submit' support
-* `1.1.0`: Support for SwiftUI (macOS only)
-* `1.0.1`: Brought menu labels in line with Finder.
-* `1.0.0`: Initial release
-
 ## License
 
 MIT. Use it for anything you want, just attribute my work. Let me know if you do use it somewhere, I'd love to hear about it!
@@ -153,7 +146,7 @@ MIT. Use it for anything you want, just attribute my work. Let me know if you do
 ```
 MIT License
 
-Copyright (c) 2021 Darren Ford
+Copyright (c) 2023 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -54,7 +54,7 @@ struct ContentView: View {
 					}
 
 					VStack(alignment: .leading) {
-						Text("Rounded").bold()
+						Text("Square").bold()
 						DSFSearchField.SwiftUI(
 							text: .constant("")
 						)

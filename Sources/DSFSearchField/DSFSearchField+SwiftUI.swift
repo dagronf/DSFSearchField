@@ -84,9 +84,7 @@ public extension DSFSearchField {
 
 @available(macOS 10.15, *)
 public extension DSFSearchField.SwiftUI {
-	func makeNSView(
-		context _: NSViewRepresentableContext<DSFSearchField.SwiftUI>
-	) -> DSFSearchField {
+	func makeNSView(context: Context) -> DSFSearchField {
 		let searchBar = DSFSearchField(frame: .zero, recentsAutosaveName: self.autosaveName)
 		searchBar.placeholderString = self.placeholderText
 		searchBar.searchTermChangeCallback = { newTerm in
@@ -102,10 +100,7 @@ public extension DSFSearchField.SwiftUI {
 		return searchBar
 	}
 
-	func updateNSView(
-		_ nsView: DSFSearchField,
-		context _: NSViewRepresentableContext<DSFSearchField.SwiftUI>
-	) {
+	func updateNSView(_ nsView: DSFSearchField, context: Context) {
 		nsView.stringValue = text
 	}
 }

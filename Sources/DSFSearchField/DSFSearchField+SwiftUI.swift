@@ -21,7 +21,7 @@
 
 #if os(macOS) && canImport(SwiftUI)
 
-import AppKit
+//import AppKit
 import SwiftUI
 
 @available(macOS 10.15, *)
@@ -32,10 +32,12 @@ public extension DSFSearchField {
 
 		@Binding var text: String
 
-		let placeholderText: String?
-		let autosaveName: String?
-		let onSearchTermChange: ((String) -> Void)?
-		let onSearchTermSubmit: ((String) -> Void)?
+		private var placeholderText: String?
+		private var bezelStyle: NSTextField.BezelStyle?
+		private var controlSize: ControlSize?
+		private var autosaveName: String?
+		private var onSearchTermChange: ((String) -> Void)?
+		private var onSearchTermSubmit: ((String) -> Void)?
 
 		/// Initialize a DSFSearchField
 		/// - Parameters:
@@ -48,11 +50,15 @@ public extension DSFSearchField {
 			text: Binding<String>,
 			placeholderText: String? = nil,
 			autosaveName: String? = nil,
+			bezelStyle: NSTextField.BezelStyle? = nil,
+			controlSize: ControlSize? = nil,
 			onSearchTermChange: ((String) -> Void)? = nil,
 			onSearchTermSubmit: ((String) -> Void)? = nil
 		) {
 			self._text = text
 			self.placeholderText = placeholderText
+			self.bezelStyle = bezelStyle
+			self.controlSize = controlSize
 			self.autosaveName = autosaveName
 			self.onSearchTermChange = onSearchTermChange
 			self.onSearchTermSubmit = onSearchTermSubmit
@@ -60,24 +66,16 @@ public extension DSFSearchField {
 
 		/// Called when the user 'submits' the text in the search control
 		public func onUpdateSearchText(_ block: @escaping (String) -> Void) -> Self {
-			return DSFSearchField.SwiftUI(
-				text: self.$text,
-				placeholderText: self.placeholderText,
-				autosaveName: self.autosaveName,
-				onSearchTermChange: block,
-				onSearchTermSubmit: self.onSearchTermChange
-			)
+			var copy = self
+			copy.onSearchTermChange = block
+			return copy
 		}
 
 		/// Called when the user 'submits' the text in the search control
 		public func onSubmitSearchText(_ block: @escaping (String) -> Void) -> Self {
-			return DSFSearchField.SwiftUI(
-				text: self.$text,
-				placeholderText: self.placeholderText,
-				autosaveName: self.autosaveName,
-				onSearchTermChange: self.onSearchTermChange,
-				onSearchTermSubmit: block
-			)
+			var copy = self
+			copy.onSearchTermSubmit = block
+			return copy
 		}
 	}
 }
@@ -86,6 +84,11 @@ public extension DSFSearchField {
 public extension DSFSearchField.SwiftUI {
 	func makeNSView(context: Context) -> DSFSearchField {
 		let searchBar = DSFSearchField(frame: .zero, recentsAutosaveName: self.autosaveName)
+
+		if let bezelStyle = self.bezelStyle {
+			searchBar.bezelStyle = bezelStyle
+		}
+
 		searchBar.placeholderString = self.placeholderText
 		searchBar.searchTermChangeCallback = { newTerm in
 			self.text = newTerm
@@ -100,8 +103,17 @@ public extension DSFSearchField.SwiftUI {
 		return searchBar
 	}
 
-	func updateNSView(_ nsView: DSFSearchField, context: Context) {
-		nsView.stringValue = text
+	func updateNSView(_ searchBar: DSFSearchField, context: Context) {
+		searchBar.stringValue = text
+		if let bezelStyle = self.bezelStyle {
+			searchBar.bezelStyle = bezelStyle
+		}
+	}
+
+	func bezel(_ bezelStyle: NSTextField.BezelStyle) -> Self {
+		var copy = self
+		copy.bezelStyle = bezelStyle
+		return copy
 	}
 }
 

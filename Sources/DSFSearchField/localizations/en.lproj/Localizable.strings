@@ -1,0 +1,13 @@
+// Localizations
+
+// Menu title for the recent searches menu
+"LCSMenuTitle" = "Recent";
+
+// Menu item to clear all recent items from the search recent menu
+"LCSMenuClearRecentsTitle" = "Clear Recent Searches";
+
+// Title presented for the available recent searches menu when recent searches are available
+"LCSMenuRecentTitle" = "Recent Searches";
+
+// Title stating that there are no recent searches in the search menu
+"LCSMenuNoRecentsTitle" = "No Recent Search";

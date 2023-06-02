@@ -92,38 +92,24 @@ private extension DSFSearchField {
 
 	// Generate a searches menu
 	func createSearchesMenu() -> NSMenu {
-		let menu = NSMenu(title: Localizations.LCSMenuTitle)
+		let menu = NSMenu(title: _NSLS_("LCSMenuTitle"))
 
-		let recentTitleItem = menu.addItem(withTitle: Localizations.LCSMenuRecentTitle, action: nil, keyEquivalent: "")
+		let recentTitleItem = menu.addItem(withTitle: _NSLS_("LCSMenuRecentTitle"), action: nil, keyEquivalent: "")
 		recentTitleItem.tag = Int(NSSearchField.recentsTitleMenuItemTag)
 
-		let placeholder = menu.addItem(withTitle: Localizations.LCSMenuItemTitle, action: nil, keyEquivalent: "")
+		// Just a placeholder item in the menu where the searchfield fills the search history
+		let placeholder = menu.addItem(withTitle: "<PlaceholderItem>", action: nil, keyEquivalent: "")
 		placeholder.tag = Int(NSSearchField.recentsMenuItemTag)
 
 		menu.addItem(NSMenuItem.separator())
 
-		let clearItem = menu.addItem(withTitle: Localizations.LCSMenuClearRecentsTitle, action: nil, keyEquivalent: "")
+		let clearItem = menu.addItem(withTitle: _NSLS_("LCSMenuClearRecentsTitle"), action: nil, keyEquivalent: "")
 		clearItem.tag = Int(NSSearchField.clearRecentsMenuItemTag)
 
-		let emptyItem = menu.addItem(withTitle: Localizations.LCSMenuNoRecentsTitle, action: nil, keyEquivalent: "")
+		let emptyItem = menu.addItem(withTitle: _NSLS_("LCSMenuNoRecentsTitle"), action: nil, keyEquivalent: "")
 		emptyItem.tag = Int(NSSearchField.noRecentsMenuItemTag)
 
 		return menu
-	}
-}
-
-// MARK: - Localizations
-
-private extension DSFSearchField {
-	// Localized strings
-	enum Localizations {
-		static let LCSMenuTitle = NSLocalizedString("Recent", comment: "Menu title for the recent searches menu")
-
-		static let LCSMenuItemTitle = NSLocalizedString("Item", comment: "")
-		static let LCSMenuClearRecentsTitle = NSLocalizedString("Clear Recent Searches", comment: "Menu item to clear all recent items from the search recent menu")
-
-		static let LCSMenuRecentTitle = NSLocalizedString("Recent Searches", comment: "Title presented for the available recent searches menu when recent searches are available")
-		static let LCSMenuNoRecentsTitle = NSLocalizedString("No Recent Search", comment: "Title stating that there are no recent searches in the search menu")
 	}
 }
 

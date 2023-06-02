@@ -34,7 +34,6 @@ public extension DSFSearchField {
 
 		private var placeholderText: String?
 		private var bezelStyle: NSTextField.BezelStyle?
-		private var controlSize: ControlSize?
 		private var autosaveName: String?
 		private var onSearchTermChange: ((String) -> Void)?
 		private var onSearchTermSubmit: ((String) -> Void)?
@@ -44,6 +43,7 @@ public extension DSFSearchField {
 		///   - text: The initial text for the control
 		///   - placeholderText: The placeholder text to display in an empty search field
 		///   - autosaveName: The autosave name
+		///   - bezelStyle: The style of bezel to use on the search bar
 		///   - onSearchTextChange: An optional callback for when the search term changes
 		///   - onSearchTermSubmit: An optional callback for when the search field submits a value
 		public init(
@@ -51,14 +51,12 @@ public extension DSFSearchField {
 			placeholderText: String? = nil,
 			autosaveName: String? = nil,
 			bezelStyle: NSTextField.BezelStyle? = nil,
-			controlSize: ControlSize? = nil,
 			onSearchTermChange: ((String) -> Void)? = nil,
 			onSearchTermSubmit: ((String) -> Void)? = nil
 		) {
 			self._text = text
 			self.placeholderText = placeholderText
 			self.bezelStyle = bezelStyle
-			self.controlSize = controlSize
 			self.autosaveName = autosaveName
 			self.onSearchTermChange = onSearchTermChange
 			self.onSearchTermSubmit = onSearchTermSubmit

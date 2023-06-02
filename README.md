@@ -96,6 +96,14 @@ DSFSearchField.SwiftUI(
 
 ### Available view modifiers
 
+#### `.bezelStyle`
+
+The style of bezel for the search bar.
+
+#### `.controlSize`
+
+The size of the control
+
 **Note:** Unfortunately, I could not figure out how to hook into SwiftUI's `onSubmit` view modifier (and it appears that
 the required `Environment` values have not been made visible to the public. So that means that the default `onSubmit`
 view modifier that SwiftUI provides will not be called.

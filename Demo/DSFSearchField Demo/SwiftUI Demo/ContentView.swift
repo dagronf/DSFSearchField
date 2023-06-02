@@ -62,6 +62,39 @@ struct ContentView: View {
 					}
 				}
 			}
+
+			GroupBox("Control Sizes") {
+				HStack {
+					VStack(alignment: .leading) {
+						Text("mini").bold()
+						DSFSearchField.SwiftUI(
+							text: .constant("")
+						)
+						.controlSize(.mini)
+					}
+					VStack(alignment: .leading) {
+						Text("small").bold()
+						DSFSearchField.SwiftUI(
+							text: .constant("")
+						)
+						.controlSize(.small)
+					}
+					VStack(alignment: .leading) {
+						Text("regular").bold()
+						DSFSearchField.SwiftUI(
+							text: .constant("")
+						)
+						.controlSize(.regular)
+					}
+					VStack(alignment: .leading) {
+						Text("large").bold()
+						DSFSearchField.SwiftUI(
+							text: .constant("")
+						)
+						.controlSize(.large)
+					}
+				}
+			}
 		}
 		.padding()
 	}

@@ -34,6 +34,7 @@ public extension DSFSearchField {
 
 		private var placeholderText: String?
 		private var bezelStyle: NSTextField.BezelStyle?
+		private var maximumRecents: Int?
 		private var autosaveName: String?
 		private var onSearchTermChange: ((String) -> Void)?
 		private var onSearchTermSubmit: ((String) -> Void)?
@@ -98,6 +99,10 @@ public extension DSFSearchField.SwiftUI {
 		searchBar.cell?.wraps = false
 		searchBar.cell?.isScrollable = true
 
+		if let maximumRecents = self.maximumRecents {
+			searchBar.maximumRecents = maximumRecents
+		}
+
 		return searchBar
 	}
 
@@ -106,12 +111,33 @@ public extension DSFSearchField.SwiftUI {
 		if let bezelStyle = self.bezelStyle {
 			searchBar.bezelStyle = bezelStyle
 		}
+
+		if let maximumRecents = self.maximumRecents {
+			searchBar.maximumRecents = maximumRecents
+		}
+	}
+}
+
+// MARK: - Modifiers
+
+@available(macOS 10.15, *)
+public extension DSFSearchField.SwiftUI {
+	/// Set the bezel style for the control
+	func bezelStyle(_ bezelStyle: NSTextField.BezelStyle) -> Self {
+		modified(self) {
+			$0.bezelStyle = bezelStyle
+		}
 	}
 
-	func bezel(_ bezelStyle: NSTextField.BezelStyle) -> Self {
-		var copy = self
-		copy.bezelStyle = bezelStyle
-		return copy
+	/// Set the maximum number of recent values to display in the search dropdown
+	///
+	/// Asserts if `maximumRecents` is less than 1
+	func maximumRecents(_ maximumRecents: Int) -> Self {
+		assert(maximumRecents >= 1)
+		return modified(self) {
+			// Set the minimum number of recents to 1
+			$0.maximumRecents = maximumRecents
+		}
 	}
 }
 

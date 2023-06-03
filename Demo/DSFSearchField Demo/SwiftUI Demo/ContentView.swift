@@ -50,7 +50,7 @@ struct ContentView: View {
 						DSFSearchField.SwiftUI(
 							text: .constant("")
 						)
-						.bezel(.roundedBezel)
+						.bezelStyle(.roundedBezel)
 					}
 
 					VStack(alignment: .leading) {
@@ -58,7 +58,7 @@ struct ContentView: View {
 						DSFSearchField.SwiftUI(
 							text: .constant("")
 						)
-						.bezel(.squareBezel)
+						.bezelStyle(.squareBezel)
 					}
 				}
 			}
@@ -77,6 +77,7 @@ struct ContentView: View {
 						DSFSearchField.SwiftUI(
 							text: .constant("")
 						)
+						.maximumRecents(2)
 						.controlSize(.small)
 					}
 					VStack(alignment: .leading) {
